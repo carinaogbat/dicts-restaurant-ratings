@@ -13,7 +13,7 @@ def create_rest_rating_dict(filename):
     file = open(filename)
     for line in file:
         restaurant, rating = line.rstrip().split(':')
-        restaurant_ratings[restaurant] = rating
+        restaurant_ratings[restaurant] = int(rating)
         restaurant_sorted = sorted(restaurant_ratings.keys())
         for restaurant in restaurant_sorted:
             print(f"{restaurant} rating is {restaurant_ratings[restaurant]}")
@@ -23,7 +23,7 @@ print(create_rest_rating_dict('scores.txt'))
 
 def ask_user_rest_and_rating(filename):
     new_user_rest = input("Please type the name of the restaurant you want to review ")
-    new_user_rest_rating = input("Please rate the restaurant [1-5] ")
+    new_user_rest_rating = int(input("Please rate the restaurant [1-5] "))
     restaurant_ratings[new_user_rest] = new_user_rest_rating
     sorted = create_rest_rating_dict(filename)
     print(sorted)
